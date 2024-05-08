@@ -137,7 +137,7 @@ SWEP.RecoilMax = 1.75
 SWEP.UseVisualRecoil = true
 SWEP.VisualRecoilMultSights = 0.4
 SWEP.VisualRecoilPunchSights = 2
-SWEP.VisualRecoilRollSights = 5
+SWEP.VisualRecoilRollSights = 15
 SWEP.VisualRecoilSideSights = 0
 SWEP.VisualRecoilUpSights = 0
 
@@ -170,10 +170,10 @@ SWEP.Spread = 0.03
 SWEP.SpreadAddRecoil = 0.01
 
 SWEP.SpreadAddHipFire = SWEP.Spread * 0
-SWEP.SpreadAddMove = SWEP.Spread * 0.2
+SWEP.SpreadAddMove = SWEP.Spread * 1
 SWEP.SpreadAddMidAir = SWEP.Spread * 0.5
 SWEP.SpreadAddCrouch = -SWEP.Spread * 0.1
-SWEP.SpreadAddSights = -SWEP.Spread * 2.75
+SWEP.SpreadAddSights = -SWEP.Spread * 1.25
 
 SWEP.SpreadMultRecoil = 1.5
 SWEP.RecoilModifierCap = SWEP.RecoilMax
@@ -199,8 +199,8 @@ SWEP.TracerColor = Color(255, 255, 200) -- Color of tracers. Only works if trace
 -------------------------- POSITIONS
 
 SWEP.IronSights = {
-    Pos = Vector(-3.28, -7.5, -0.3),
-    Ang = Angle(0, 0, -4),
+    Pos = Vector(-3.28, -5, -0.3),
+    Ang = Angle(0, 0, -4.25),
     Magnification = 1.15,
     ViewModelFOV = 54,
 	CrosshairInSights = false
@@ -234,8 +234,8 @@ SWEP.PeekPos = Vector(1.5, 4, 0.5)
 SWEP.PeekAng = Angle(0, 0, 10)
 
 SWEP.CustomizeAng = Angle(90, 0, 0)
-SWEP.CustomizePos = Vector(15, 30, 3)
-SWEP.CustomizeRotateAnchor = Vector(15, -2.25, -4)
+SWEP.CustomizePos = Vector(12, 32.5, 4)
+SWEP.CustomizeRotateAnchor = Vector(12, -3, -4)
 SWEP.CustomizeSnapshotFOV = 90
 SWEP.CustomizeSnapshotPos = Vector(-1, 0, 3)
 SWEP.CustomizeSnapshotAng = Angle(0, 0, 0)
@@ -365,16 +365,19 @@ SWEP.Animations = {
 	},
     ["fire"] = {
         Source = "shoot1",
+		IKTimeLine = { { t = 0,  lhik = 1, rhik = 1} },
     },
     ["reload"] = {
         Source = "reload_short",
-		MinProgress = 0.8,
+		MinProgress = 0.925,
+		RefillProgress = 0.7,
+		FireASAP = true,
 		MagSwapTime = 1.5,
 		DropMagAt = 0.8,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.1, lhik = 0, rhik = 1 },
-            { t = 0.7, lhik = 0, rhik = 1 },
+            { t = 0.65, lhik = 0, rhik = 1 },
             { t = 1, lhik = 1, rhik = 1 },
         },
         EventTable = {
@@ -385,20 +388,22 @@ SWEP.Animations = {
 			{s = path .. "wfoly_sm_papa90_reload_magin_v2_01.ogg", t = 1.51},
 			{s = path .. "wfoly_sm_papa90_reload_magin_v2_02.ogg", t = 1.71},
             {s = path .. "wfoly_sm_papa90_reload_arm_maghit.ogg", t = 1.967},
-			{s = path .. "wfoly_sm_papa90_reload_hitmag_01.ogg", t = 2.1},
+			{s = path .. "wfoly_sm_papa90_reload_hitmag_01.ogg", t = 2.05},
 			{s = path .. "wfoly_sm_papa90_reload_end.ogg", t = 2.533},
         },
     },
     ["reload_empty"] = {
         Source = "reload",
-		MinProgress = 0.9,
+		MinProgress = 0.925,
+		RefillProgress = 0.8,
+		FireASAP = true,
 		MagSwapTime = 1.5,
 		DropMagAt = 0.8,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
-            { t = 0.2, lhik = 0, rhik = 1 },
-            { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 0.95, lhik = 1, rhik = 1 },
+            { t = 0.1, lhik = 0, rhik = 1 },
+            { t = 0.75, lhik = 0, rhik = 1 },
+            { t = 0.9, lhik = 1, rhik = 1 },
         },
         EventTable = {
             {s = path .. "wfoly_sm_papa90_reload_empty_gunrattle.ogg", t = 0.133},
@@ -415,14 +420,16 @@ SWEP.Animations = {
     },
     ["reload_fast"] = {
         Source = "reload_fast",
-		MinProgress = 0.8,
+		MinProgress = 0.925,
+		RefillProgress = 0.65,
+		FireASAP = true,
 		MagSwapTime = 1.5,
 		DropMagAt = 0.8,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.1, lhik = 0, rhik = 1 },
-            { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 0.95, lhik = 1, rhik = 1 },
+            { t = 0.65, lhik = 0, rhik = 1 },
+            { t = 0.8, lhik = 1, rhik = 1 },
         },
         EventTable = {
 			{s = path .. "wfoly_sm_papa90_reload_fast_cloth02.ogg", t = 0.067},
@@ -437,14 +444,16 @@ SWEP.Animations = {
     },
     ["reload_fast_empty"] = {
         Source = "reload_fast_empty",
-		MinProgress = 0.8,
+		MinProgress = 0.925,
+		RefillProgress = 0.75,
+		FireASAP = true,
 		MagSwapTime = 1.5,
 		DropMagAt = 0.8,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.1, lhik = 0, rhik = 1 },
             { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 0.95, lhik = 1, rhik = 1 },
+            { t = 0.85, lhik = 1, rhik = 1 },
         },
         EventTable = {
 			{s = path .. "wfoly_sm_papa90_reload_empty_fast_start.ogg", t = 0.067},
@@ -530,8 +539,8 @@ SWEP.Animations = {
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.1, lhik = 0, rhik = 1 },
-            { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 1.1, lhik = 1, rhik = 1 },
+            { t = 0.8, lhik = 0, rhik = 1 },
+            { t = 0.95, lhik = 1, rhik = 1 },
         },
         EventTable = {
             {s = path .. "wfoly_sm_papa90_inspect_01.ogg", t = 0.067},
@@ -708,155 +717,161 @@ SWEP.Hook_ModifyBodygroups = function(wep, data)
 end
 
 SWEP.Attachments = {
-    {
+    { -- 1
+        PrintName = ARC9:GetPhrase("mw19_category_muzzle"),
+        Category = "cod2019_muzzle",
+        DefaultIcon = Material("entities/defattachs/muzzle-ar.png", "mips smooth"),
+		Bone = "tag_silencer",
+        Pos = Vector(0, 0, 0),
+		Icon_Offset = Vector(1, 0, 0),
+		InstalledElements = {"muzzle_none"},
+    },
+    { -- 2
         PrintName = ARC9:GetPhrase("mw19_category_barrel"),
-		DefaultIcon = Material("arc9/def_att_icons/barrel.png", "mips smooth"),
-        DefaultAttName = "Standard Barrel",
+		DefaultIcon = Material("entities/defattachs/barrel-ar.png", "mips smooth"),
         Category = "cod2019_p90_barrel",
         Bone = "tag_barrel_attach",
         Pos = Vector(0, 0, 0),
-        Ang = Angle(0, 0, 0),
+		Icon_Offset = Vector(0, 0, 0),
+		RejectAttachments = { ["go_p90_extendedbarrel"] = true },
     },
-    {
-        PrintName = ARC9:GetPhrase("mw19_category_muzzle"),
-        DefaultAttName = "Standard Muzzle",
-        Category = {"cod2019_muzzle","p90_barrel"},
-        Bone = "tag_silencer",
-        Pos = Vector(0, 0, 0),
-        Ang = Angle(0, 0, 0),
-		InstalledElements = {"muzzle_none"},
-		Scale = 1,
-    },
-    {
-        PrintName = ARC9:GetPhrase("mw19_category_optic"),
-		DefaultIcon = Material("arc9/def_att_icons/optic.png", "mips smooth"),
-        Bone = "tag_holo",
-        Pos = Vector(1.5, 0, -0.1),
-        Ang = Angle(0, 0, 0),
-        Category = {"cod2019_optic","cod2019_p90_optic"},
-        CorrectiveAng = Angle(0, 0, 0),
-		InstalledElements = {"sights"},
-    },
-    {
+    { -- 3
         PrintName = ARC9:GetPhrase("mw19_category_laser"),
-        DefaultAttName = "Default",
+		DefaultIcon = Material("entities/defattachs/laser-ar.png", "mips smooth"),
         Category = "cod2019_tac",
         Bone = "tag_laser_attach",
         Pos = Vector(0.5, 0, 0.1),
-        Ang = Angle(0, 0, 0),
-		--InstalledElements = {"rail_laser"},
     },
-    {
-        PrintName = ARC9:GetPhrase("mw19_category_underbarrel"),
-        DefaultAttName = "Default",
-        Category = "cod2019_grip",
-        Bone = "tag_attachments",
-        Pos = Vector(16, 0, 0.2),
-        Ang = Angle(0, 0, 180),
-		Scale = 1,
-		InstalledElements = {"cod2019_p90_b"},
-		RequireElements = {"gsr_p90_extbarrel"},
+    { -- 4
+        PrintName = ARC9:GetPhrase("mw19_category_optic"),
+		DefaultIcon = Material("entities/defattachs/optic.png", "mips smooth"),
+        Bone = "tag_holo",
+        Pos = Vector(1.5, 0, -0.1),
+        Category = {"cod2019_optic","cod2019_p90_optic"},
+		InstalledElements = {"sights"},
     },
-    {
+    { -- 5
         PrintName = ARC9:GetPhrase("mw19_category_stock"),
-		DefaultIcon = Material("arc9/def_att_icons/stock_ak.png", "mips smooth"),
-        DefaultAttName = "Default",
-        Category = "cod2019_p90_stock",
+		DefaultIcon = Material("entities/defattachs/stock-ar.png", "mips smooth"),
+        Category = {"cod2019_p90_stock"},
         Bone = "tag_stock_attach",
         Pos = Vector(0, 0, 0),
-        Ang = Angle(0, 0, 0),
-		Icon_Offset = Vector(-17, 0, 1),
-		--InstalledElements = {"rail_laser"},
+		Icon_Offset = Vector(-14.5, 0, 0),
     },
-    {
-        PrintName = "Front Grip",
+    { -- 6
+        PrintName = ARC9:GetPhrase("mw19_category_underbarrel"),
+		DefaultIcon = Material("entities/defattachs/grip.png", "mips smooth"),
         Category = "cod2019_pistolgrip_front",
         Bone = "tag_pistolgrip_attach",
-        Pos = Vector(4.5, 0, 0.5),
+        Pos = Vector(3.75, 0, 0),
+        Ang = Angle(0, 0, 180),
+		ExcludeElements = {"cod2019_p90_barrel_long_rail"},
     },
-    {
+    { -- 7
+        PrintName = ARC9:GetPhrase("mw19_category_magazine"),
+		DefaultIcon = Material("entities/defattachs/magazine-ar.png", "mips smooth"),
+		Bone = "tag_mag_attach",
+        Category = {"cod2019_mag","cod2019_p90_mag"},
+        Pos = Vector(0, 0, 0),
+		Hidden = true,
+    },
+    { -- 8
+        PrintName = ARC9:GetPhrase("mw19_category_ammo"),
+		DefaultIcon = Material("arc9/def_att_icons/ammotype.png", "mips smooth"),
+        Bone = "tag_mag_attach",
+		Category = {"cod2019_ammo"},
+		Pos = Vector(-10.5, 0, 0),
+    },
+    { -- 9
         PrintName = ARC9:GetPhrase("mw19_category_reargrip"),
 		DefaultIcon = Material("entities/defattachs/reargrip-ar.png", "mips smooth"),
         Category = "cod2019_pistolgrip",
         Bone = "tag_pistolgrip_attach",
         Pos = Vector(0, 0, 0),
     },
-    {
-        PrintName = ARC9:GetPhrase("mw19_folder_other2"),
-        Category = "cod2019_p90_reciever",
+    { -- 10
+        PrintName = ARC9:GetPhrase("mw19_category_perk"),
+        Category = {"cod2019_perks","cod2019_perks_soh","cod2019_perks_ss"},
+        Bone = "tag_attachments",
+        Pos = Vector(10, 0, 0),
+    },
+	
+	-- Unofficial
+    { -- 11
+        PrintName = ARC9:GetPhrase("mw19_category_receiver"),
+        Category = "cod2019_p90_receiver",
         Bone = "tag_attachments",
         Pos = Vector(0, 0, 0),
-        Ang = Angle(0, 0, 0),
-		Icon_Offset = Vector(11, 0, 4),
+		Icon_Offset = Vector(6, 0, 1),
+		Hidden = false,
     },
-    {
-        PrintName = ARC9:GetPhrase("mw19_category_ammo"),
-		DefaultIcon = Material("arc9/def_att_icons/ammotype.png", "mips smooth"),
-        Bone = "j_mag1",
-        Category = {"cod2019_ammo"},
-        Pos = Vector(0, 0, 0),
-        Ang = Angle(0, 0, 0),
-		Icon_Offset = Vector(-2, 0, 0),
-    },
-    {
-        PrintName = ARC9:GetPhrase("mw19_category_magazine"),
-		DefaultIcon = Material("arc9/def_att_icons/mag_ar.png", "mips smooth"),
-		Bone = "tag_mag_attach",
-        Category = {"cod2019_p90_mag"},
-        Pos = Vector(0, 0, 0),
-        Ang = Angle(0, 0, 0),
-		--Installed = "cod2019_p90_mag_default",
-        --Integral = "cod2019_p90_mag_default",
-    },
-    {
-        PrintName = ARC9:GetPhrase("mw19_category_perk"),
-        Category = {"cod2019_perks","cod2019_perks_soh","cod2019_perks_ss"}
-    },
-    {
+	
+	-- Cosmetics
+    { -- 12
         PrintName = ARC9:GetPhrase("mw19_category_skins"),
-        --Bone = "v_weapon.Clip",
+        Bone = "tag_cosmetic",
+        Pos = Vector(7, 0, 3),
         Category = "cod2019_skins_p90",
 		CosmeticOnly = true,
     },
-    {
+    { -- 13
         PrintName = ARC9:GetPhrase("mw19_category_camouflage"),
         Category = {"universal_camo"},
+        Bone = "tag_cosmetic",
+        Pos = Vector(5, 0, 3),
         CosmeticOnly = true,
     },
-    {
+    { -- 14
         PrintName = ARC9:GetPhrase("mw19_category_sticker"),
         StickerModel = "models/weapons/cod2019/stickers/smg_p90_decal_a.mdl",
         Category = "stickers",
+        Bone = "tag_cosmetic",
+        Pos = Vector(3, 0, 3),
     },
-    {
+    { -- 15
         PrintName = ARC9:GetPhrase("mw19_category_sticker"),
         StickerModel = "models/weapons/cod2019/stickers/smg_p90_decal_b.mdl",
         Category = "stickers",
+        Bone = "tag_cosmetic",
+        Pos = Vector(1, 0, 3),
     },
-    {
+    { -- 16
         PrintName = ARC9:GetPhrase("mw19_category_sticker"),
         StickerModel = "models/weapons/cod2019/stickers/smg_p90_decal_c.mdl",
         Category = "stickers",
+        Bone = "tag_cosmetic",
+        Pos = Vector(-1, 0, 3),
     },
-    {
+    { -- 17
         PrintName = ARC9:GetPhrase("mw19_category_sticker"),
         StickerModel = "models/weapons/cod2019/stickers/smg_p90_decal_d.mdl",
         Category = "stickers",
+        Bone = "tag_cosmetic",
+        Pos = Vector(-3, 0, 3),
     },
-    {
+    { -- 18
         PrintName = ARC9:GetPhrase("mw19_category_sticker"),
         StickerModel = "models/weapons/cod2019/stickers/smg_p90_decal_e.mdl",
         Category = "stickers",
+        Bone = "tag_cosmetic",
+        Pos = Vector(-5, 0, 3),
     },
-    {
+    { -- 19
         PrintName = ARC9:GetPhrase("mw19_category_charm"),
-        Category = {"charm", "killcounter"},
-		RejectAttachments = { ["arc9_stat_proscreen"] = true },
-		CosmeticOnly = true,
+        CosmeticOnly = true,
+        Category = {"charm"},
         Bone = "tag_cosmetic",
         Pos = Vector(-1.5, 0.05, -1.8),
-        Ang = Angle(0, 0, 0),
-		Scale = 1.5,
+		Icon_Offset = Vector(-5.5, 0, 4.85),
+    },
+    { -- 20
+        PrintName = ARC9:GetPhrase("mw19_category_stats"),
+        Category = {"killcounter","killcounter2"},
+        Bone = "tag_cosmetic",
+        Pos = Vector(0.5, 0, 0),
+		Icon_Offset = Vector(-9.5, 0, 3),
+		-- RejectAttachments = { ["arc9_stat_proscreen"] = true },
+		CosmeticOnly = true,
     },
 }
 

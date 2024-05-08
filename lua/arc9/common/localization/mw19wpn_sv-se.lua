@@ -231,6 +231,23 @@ L["mw19_firemode_unguided"] = "OSTYRD" -- UO
 L["mw19_optic_stat_zoom2"] = "Zoom-nivå" -- Most scopes
 L["mw19_ammo_stat_ignite_chance"] = "Vid träff: Chans att tända fyr på offret" -- UO
 
+////////////////////  Default Scopes
+L["cod2019_optic_default_svd.printname"] = "Standard Riktmedel" -- UO
+L["cod2019_optic_default_svd.compactname"] = "Standard" -- UO
+L["cod2019_optic_default_svd.description"] = "Standard <color=100,255,100>5,5x</color> riktmedel till Dragunov. <color=255,100,100>Riktmedel glimb synlig till fienden.</color>"
+
+L["cod2019_optic_default_hdr.description"] = "Riktmedel med <color=100,255,100>6,0x</color> zoom-nivå till HDR. <color=255,100,100>Riktmedel glimb synlig till fienden.</color>"
+
+L["cod2019_optic_default_ax50.description"] = "Riktmedel med <color=100,255,100>5,5x</color> zoom-nivå till AX50. <color=255,100,100>Riktmedel glimb synlig till fienden.</color>"
+
+L["cod2019_optic_default_rytec.description"] = "Riktmedel med <color=100,255,100>4,5x</color> zoom-nivå till Rytec AMR. <color=255,100,100>Riktmedel glimb synlig till fienden.</color>"
+
+L["cod2019_optic_default_strela.description"] = "Sikte med <color=100,255,100>3,0x</color> zoom-nivå till Strela-P."
+
+L["cod2019_optic_default_m32.printname"] = "MGL-32 Granattillsats Sikte"
+L["cod2019_optic_default_m32.compactname"] = "MGL GTS"
+L["cod2019_optic_default_m32.description"] = "Sikte med <color=100,255,100>3,5x</color> zoom-nivå till MGL-32."
+
 ////////////////////  Ammo
 L["cod2019_ammo_ap.printname"] = "Pansarbrytande Patroner" -- UO
 L["cod2019_ammo_ap.compactname"] = "PB" -- UO
@@ -313,9 +330,12 @@ L["cod2019_attach_grip_foregrip_side.printname"] = "ARC-Framgrepp" -- UO
 L["cod2019_attach_grip_foregrip_side.compactname"] = "ARC" -- UO
 L["cod2019_attach_grip_foregrip_side.description"] = "Extended foregrip reduces vertical recoil and provides stability from the hip for fast-paced guerrilla tactics." -- cod2019_grips_merc.description
 
-L["cod2019_grips_none.printname"] = "Alternativ Hållande" -- UO
+L["cod2019_grips_none.printname"] = "Alternativt Hållande" -- UO
 L["cod2019_grips_none.compactname"] = "Alt. Håll." -- UO
 L["cod2019_grips_none.description"] = "Alternativ hållningsstil." -- UO
+
+L["cod2019_grips_none2.printname"] = "Alternativt Hållande II" -- UO
+L["cod2019_grips_none2.compactname"] = "Alt. Håll. II" -- UO
 
 L["cod2019_grips_alt_cclamp.printname"] = "C-Clamp-Hållande" -- UO
 L["cod2019_grips_alt_cclamp.compactname"] = "C-Clamp" -- UO

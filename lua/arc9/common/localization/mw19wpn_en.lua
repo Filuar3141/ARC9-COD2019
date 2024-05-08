@@ -231,6 +231,31 @@ L["mw19_firemode_unguided"] = "UNGUIDED" -- UO
 L["mw19_optic_stat_zoom2"] = "Zoom Level" -- Most scopes
 L["mw19_ammo_stat_ignite_chance"] = "On Hit: Chance to Ignite Target" -- UO
 
+////////////////////  Default Scopes
+L["cod2019_optic_default_svd.printname"] = "Default Scope" -- UO
+L["cod2019_optic_default_svd.compactname"] = "Default" -- UO
+L["cod2019_optic_default_svd.description"] = "Default <color=100,255,100>5.5x</color> scope for the Dragunov. <color=255,100,100>Optic glint visible to enemies.</color>"
+
+L["cod2019_optic_default_hdr.printname"] = ARC9:GetPhrase("cod2019_optic_default_svd.printname") or "Default Scope" -- UO
+L["cod2019_optic_default_hdr.compactname"] = ARC9:GetPhrase("cod2019_optic_default_svd.compactname") or "Default" -- UO
+L["cod2019_optic_default_hdr.description"] = "Default <color=100,255,100>6.0x</color> scope for the HDR. <color=255,100,100>Optic glint visible to enemies.</color>"
+
+L["cod2019_optic_default_ax50.printname"] = ARC9:GetPhrase("cod2019_optic_default_svd.printname") or "Default Scope" -- UO
+L["cod2019_optic_default_ax50.compactname"] = ARC9:GetPhrase("cod2019_optic_default_svd.compactname") or "Default" -- UO
+L["cod2019_optic_default_ax50.description"] = "Default <color=100,255,100>5.5x</color> scope for the AX-50. <color=255,100,100>Optic glint visible to enemies.</color>"
+
+L["cod2019_optic_default_rytec.printname"] = ARC9:GetPhrase("cod2019_optic_default_svd.printname") or "Default Scope" -- UO
+L["cod2019_optic_default_rytec.compactname"] = ARC9:GetPhrase("cod2019_optic_default_svd.compactname") or "Default" -- UO
+L["cod2019_optic_default_rytec.description"] = "Default <color=100,255,100>4.5x</color> scope for the Rytec AMR. <color=255,100,100>Optic glint visible to enemies.</color>"
+
+L["cod2019_optic_default_strela.printname"] = ARC9:GetPhrase("cod2019_optic_default_svd.printname") or "Default Scope" -- UO
+L["cod2019_optic_default_strela.compactname"] = ARC9:GetPhrase("cod2019_optic_default_svd.compactname") or "Default" -- UO
+L["cod2019_optic_default_strela.description"] = "Default <color=100,255,100>3.0x</color> sight for the Strela-P."
+
+L["cod2019_optic_default_m32.printname"] = "MGL-32 Grenade Launcher Sight"
+L["cod2019_optic_default_m32.compactname"] = "MGL GLS"
+L["cod2019_optic_default_m32.description"] = "Default <color=100,255,100>3.5x</color> sight for the MGL-32."
+
 ////////////////////  Ammo
 L["cod2019_ammo_ap.printname"] = "Armor Piercing Rounds" -- UO
 L["cod2019_ammo_ap.compactname"] = "AP" -- UO
@@ -326,6 +351,10 @@ L["cod2019_attach_grip_foregrip_side.description"] = "Extended foregrip reduces 
 L["cod2019_grips_none.printname"] = "Alternative Holding" -- UO
 L["cod2019_grips_none.compactname"] = "Alt. Hold" -- UO
 L["cod2019_grips_none.description"] = "Alternative holding style." -- UO
+
+L["cod2019_grips_none2.printname"] = "Alternative Holding II" -- UO
+L["cod2019_grips_none2.compactname"] = "Alt. Hold II" -- UO
+L["cod2019_grips_none2.description"] = ARC9:GetPhrase("cod2019_grips_none.description") or "Alternative holding style." -- UO
 
 L["cod2019_grips_alt_cclamp.printname"] = "C-Clamp Holding" -- UO
 L["cod2019_grips_alt_cclamp.compactname"] = "C-Clamp" -- UO

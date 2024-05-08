@@ -164,7 +164,7 @@ end
 
 -------------------------- SPREAD
 
-SWEP.Spread = 0.1
+SWEP.Spread = 0.05
 
 SWEP.SpreadAddRecoil = 0.025
 
@@ -190,7 +190,7 @@ SWEP.SprintToFireTime = 0.375 -- How long it takes to go from sprinting to being
 
 -------------------------- AIM ASSIST
 
-SWEP.NoAimAssist = true
+-- SWEP.NoAimAssist = true
 
 -------------------------- MELEE
 
@@ -900,6 +900,9 @@ SWEP.AttachmentElements = {
             {5,1},
         },
     },
+	["grip_angled"] = {
+    AttPosMods = { [6] = { Pos = Vector(-2.5, 0, 0), } }	
+	}
 }
 
 SWEP.Hook_ModifyBodygroups = function(wep, data)
@@ -1049,7 +1052,7 @@ SWEP.Attachments = {
         Bone = "tag_cosmetic",
         Pos = Vector(0.5, 0, 0),
 		Icon_Offset = Vector(-5.5, 0, 3),
-		Scale = 1.5,
+		Scale = 1.1,
     },
     { -- 18
         PrintName = ARC9:GetPhrase("mw19_category_stats"),
@@ -1072,7 +1075,7 @@ SWEP.Attachments = {
 SWEP.GripPoseParam = 5
 SWEP.GripPoseParam2 = 0.5
 SWEP.CodStubbyGripPoseParam = 22
-SWEP.CodAngledGripPoseParam = 23
+SWEP.CodAngledGripPoseParam = 22.5
 SWEP.CodStubbyTallGripPoseParam = 20
 SWEP.BipodSlide = 0.85
 

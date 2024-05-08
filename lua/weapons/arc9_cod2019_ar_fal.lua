@@ -148,8 +148,9 @@ SWEP.VisualRecoilPunch = 3
 SWEP.VisualRecoilUp = 1
 
 SWEP.VisualRecoilMultSights = 0.3
-SWEP.VisualRecoilPunchSights = 55
-SWEP.VisualRecoilUpSights = 0.2
+SWEP.VisualRecoilPunchSights = 7
+SWEP.VisualRecoilRollSights = 20
+SWEP.VisualRecoilUpSights = 0.1
 
 SWEP.VisualRecoilRoll = 5
 SWEP.VisualRecoilSide = 0.2
@@ -941,7 +942,7 @@ SWEP.Attachments = {
         PrintName = ARC9:GetPhrase("mw19_category_magazine"),
 		DefaultIcon = Material("entities/defattachs/magazine-ar.png", "mips smooth"),
 		Bone = "tag_mag_attach",
-        Category = {"cod2019_fal_mag"},
+        Category = {"cod2019_fal_mag","cod2019_mag"},
         Pos = Vector(0, 0, 0),
     },
     { -- 8

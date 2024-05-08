@@ -141,8 +141,8 @@ SWEP.VisualRecoilPunch = 2.6
 SWEP.VisualRecoilUp = 0.2
 
 SWEP.VisualRecoilMultSights = 0.4
-SWEP.VisualRecoilPunchSights = 15
-SWEP.VisualRecoilRollSights = 10
+SWEP.VisualRecoilPunchSights = 4
+SWEP.VisualRecoilRollSights = 15
 SWEP.VisualRecoilSideSights = 0
 SWEP.VisualRecoilUpSights = 0
 
@@ -169,10 +169,10 @@ SWEP.Spread = 0.03
 SWEP.SpreadAddRecoil = 0.01
 
 SWEP.SpreadAddHipFire = SWEP.Spread * 0
-SWEP.SpreadAddMove = SWEP.Spread * 0.2
+SWEP.SpreadAddMove = SWEP.Spread * 1
 SWEP.SpreadAddMidAir = SWEP.Spread * 0.5
 SWEP.SpreadAddCrouch = -SWEP.Spread * 0.1
-SWEP.SpreadAddSights = -SWEP.Spread * 2.75
+SWEP.SpreadAddSights = -SWEP.Spread * 1.25
 
 SWEP.SpreadMultRecoil = 1
 SWEP.RecoilModifierCap = SWEP.RecoilMax
@@ -182,7 +182,7 @@ SWEP.RecoilModifierCapSights = 0
 -------------------------- HANDLING
 
 SWEP.AimDownSightsTime = 0.3 -- How long it takes to go from hip fire to aiming down sights.
-SWEP.SprintToFireTime = 0.5 -- How long it takes to go from sprinting to being able to fire.
+SWEP.SprintToFireTime = 0.3 -- How long it takes to go from sprinting to being able to fire.
 
 -------------------------- MELEE
 
@@ -199,8 +199,8 @@ SWEP.TracerColor = Color(255, 255, 200) -- Color of tracers. Only works if trace
 -------------------------- POSITIONS
 
 SWEP.IronSights = {
-    Pos = Vector(-2.48, -3, 0.45),
-    Ang = Angle(0, 0.2, 4),
+    Pos = Vector(-2.47, -3.75, 0.525),
+    Ang = Angle(0, 0, 4.25),
     Magnification = 1.15,
     ViewModelFOV = 56,
 	CrosshairInSights = false
@@ -345,10 +345,14 @@ SWEP.Animations = {
 	},
     ["fire"] = {
         Source = "shoot1",
+		IKTimeLine = { { t = 0,  lhik = 1, rhik = 1} },
     },
     ["reload"] = {
         Source = "reload_short",
-		MinProgress = 0.8,
+		MinProgress = 0.925,
+		PeekProgress = 0.85,
+		RefillProgress = 0.575,
+		FireASAP = true,
 		MagSwapTime = 3.5,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
@@ -366,13 +370,16 @@ SWEP.Animations = {
     },
     ["reload_empty"] = {
         Source = "reload",
-		MinProgress = 0.9,
+		MinProgress = 0.925,
+		PeekProgress = 0.85,
+		RefillProgress = 0.675,
+		FireASAP = true,
 		DropMagAt = 0.5,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.2, lhik = 0, rhik = 1 },
-            { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 0.95, lhik = 1, rhik = 1 },
+            { t = 0.65, lhik = 0, rhik = 1 },
+            { t = 0.8, lhik = 1, rhik = 1 },
         },
         EventTable = {
 			{s = path .. "wfoly_sm_charlie9_reload_empty_shake.ogg", t = 0.067},
@@ -385,7 +392,10 @@ SWEP.Animations = {
     },
     ["reload_fast"] = {
         Source = "reload_fast",
-		MinProgress = 0.8,
+		MinProgress = 0.9,
+		PeekProgress = 0.85,
+		RefillProgress = 0.625,
+		FireASAP = true,
 		MagSwapTime = 1.5,
 		DropMagAt = 0.55,
         IKTimeLine = {
@@ -404,14 +414,17 @@ SWEP.Animations = {
     },
     ["reload_fast_empty"] = {
         Source = "reload_fast_empty",
-		MinProgress = 0.8,
+		MinProgress = 0.925,
+		PeekProgress = 0.85,
+		RefillProgress = 0.65,
+		FireASAP = true,
 		MagSwapTime = 1.5,
 		DropMagAt = 0.55,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.2, lhik = 0, rhik = 1 },
-            { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 0.8, lhik = 1, rhik = 1 },
+            { t = 0.65, lhik = 0, rhik = 1 },
+            { t = 0.725, lhik = 1, rhik = 1 },
         },
         EventTable = {
 			{s = path .. "wfoly_sm_charlie9_reload_empty_fast_up.ogg", t = 0.0},
@@ -423,13 +436,16 @@ SWEP.Animations = {
     },
     ["reload_drum"] = {
         Source = "reload_drum",
-		MinProgress = 0.8,
+		MinProgress = 0.9,
+		PeekProgress = 0.775,
+		RefillProgress = 0.65,
+		FireASAP = true,
 		MagSwapTime = 3.5,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.2, lhik = 0, rhik = 1 },
             { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 1, lhik = 1, rhik = 1 },
+            { t = 0.825, lhik = 1, rhik = 1 },
         },
         EventTable = {
 			{s = path .. "wfoly_sm_charlie9_reload_up.ogg", t = 0/30},
@@ -442,12 +458,15 @@ SWEP.Animations = {
     ["reload_drum_empty"] = {
         Source = "reload_drum_empty",
 		MinProgress = 0.9,
+		PeekProgress = 0.8,
+		RefillProgress = 0.75,
+		FireASAP = true,
 		DropMagAt = 0.5,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.2, lhik = 0, rhik = 1 },
-            { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 0.95, lhik = 1, rhik = 1 },
+            { t = 0.55, lhik = 0, rhik = 1 },
+            { t = 0.7, lhik = 1, rhik = 1 },
         },
         EventTable = {
 			{s = path .. "wfoly_sm_charlie9_reload_empty_shake.ogg", t = 0/30},
@@ -460,14 +479,17 @@ SWEP.Animations = {
     },
     ["reload_drum_fast"] = {
         Source = "reload_drum_fast",
-		MinProgress = 0.8,
+		MinProgress = 0.9,
+		PeekProgress = 0.775,
+		RefillProgress = 0.6,
+		FireASAP = true,
 		MagSwapTime = 1.5,
 		DropMagAt = 0.7,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.2, lhik = 0, rhik = 1 },
-            { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 0.8, lhik = 1, rhik = 1 },
+            { t = 0.6, lhik = 0, rhik = 1 },
+            { t = 0.9, lhik = 1, rhik = 1 },
         },
         EventTable = {
 			{s = path .. "wfoly_sm_charlie9_reload_empty_shake.ogg", t = 0/30},
@@ -479,7 +501,10 @@ SWEP.Animations = {
     },
     ["reload_drum_fast_empty"] = {
         Source = "reload_drum_fast_empty",
-		MinProgress = 0.8,
+		MinProgress = 0.9,
+		PeekProgress = 0.8,
+		RefillProgress = 0.725,
+		FireASAP = true,
 		MagSwapTime = 1.5,
 		DropMagAt = 0.7,
         IKTimeLine = {
@@ -499,7 +524,10 @@ SWEP.Animations = {
     },
     ["reload_xmag"] = {
         Source = "reload_xmag",
-		MinProgress = 0.8,
+		MinProgress = 0.925,
+		PeekProgress = 0.85,
+		RefillProgress = 0.575,
+		FireASAP = true,
 		MagSwapTime = 3.5,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
@@ -510,33 +538,39 @@ SWEP.Animations = {
         EventTable = {
 			{s = path .. "wfoly_sm_charlie9_reload_up.ogg", t = 0/30},
 			{s = path .. "wfoly_sm_charlie9_reload_grab.ogg", t = 11/30},
-			{s = path .. "wfoly_sm_charlie9_reload_magout.ogg", t = 23/30},
-			{s = path .. "wfoly_sm_charlie9_reload_magin.ogg", t = 33/30},
-			{s = path .. "wfoly_sm_charlie9_reload_end.ogg", t = 51/30},
+			{s = path .. "wfoly_sm_charlie9_reload_magout.ogg", t = 26/30},
+			{s = path .. "wfoly_sm_charlie9_reload_magin.ogg", t = 40/30},
+			{s = path .. "wfoly_sm_charlie9_reload_end.ogg", t = 58/30},
         },
     },
     ["reload_xmag_empty"] = {
         Source = "reload_xmag_empty",
-		MinProgress = 0.9,
+		MinProgress = 0.925,
+		PeekProgress = 0.85,
+		RefillProgress = 0.675,
+		FireASAP = true,
 		DropMagAt = 0.5,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.2, lhik = 0, rhik = 1 },
-            { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 0.95, lhik = 1, rhik = 1 },
+            { t = 0.65, lhik = 0, rhik = 1 },
+            { t = 0.8, lhik = 1, rhik = 1 },
         },
         EventTable = {
 			{s = path .. "wfoly_sm_charlie9_reload_empty_shake.ogg", t = 0/30},
-			{s = path .. "wfoly_sm_charlie9_reload_empty_magout.ogg", t = 10/30},
-			{s = path .. "wfoly_sm_charlie9_reload_empty_arm.ogg", t = 20/30},
-			{s = path .. "wfoly_sm_charlie9_reload_empty_magin.ogg", t = 34/30},
-			{s = path .. "wfoly_sm_charlie9_reload_empty_bolt_release.ogg", t = 48/30},
-			{s = path .. "wfoly_sm_charlie9_reload_empty_end.ogg", t = 48/30},
+			{s = path .. "wfoly_sm_charlie9_reload_empty_magout.ogg", t = 13/30},
+			{s = path .. "wfoly_sm_charlie9_reload_empty_arm.ogg", t = 25/30},
+			{s = path .. "wfoly_sm_charlie9_reload_empty_magin.ogg", t = 40/30},
+			{s = path .. "wfoly_sm_charlie9_reload_empty_bolt_release.ogg", t = 54/30},
+			{s = path .. "wfoly_sm_charlie9_reload_empty_end.ogg", t = 58/30},
         },
     },
     ["reload_xmag_fast"] = {
         Source = "reload_xmag_fast",
-		MinProgress = 0.8,
+		MinProgress = 0.9,
+		PeekProgress = 0.85,
+		RefillProgress = 0.6,
+		FireASAP = true,
 		MagSwapTime = 1.5,
 		DropMagAt = 0.43,
         IKTimeLine = {
@@ -555,14 +589,17 @@ SWEP.Animations = {
     },
     ["reload_xmag_fast_empty"] = {
         Source = "reload_empty_xmag_fast",
-		MinProgress = 0.8,
+		MinProgress = 0.925,
+		PeekProgress = 0.85,
+		RefillProgress = 0.65,
+		FireASAP = true,
 		MagSwapTime = 1.5,
 		DropMagAt = 0.43,
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.2, lhik = 0, rhik = 1 },
-            { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 0.8, lhik = 1, rhik = 1 },
+            { t = 0.65, lhik = 0, rhik = 1 },
+            { t = 0.725, lhik = 1, rhik = 1 },
         },
         EventTable = {
 			{s = path .. "wfoly_sm_charlie9_reload_empty_shake.ogg", t = 0/30},
@@ -647,8 +684,8 @@ SWEP.Animations = {
         IKTimeLine = {
             { t = 0, lhik = 1, rhik = 1 },
             { t = 0.1, lhik = 0, rhik = 1 },
-            { t = 0.7, lhik = 0, rhik = 1 },
-            { t = 1.1, lhik = 1, rhik = 1 },
+            { t = 0.45, lhik = 0, rhik = 1 },
+            { t = 0.55, lhik = 1, rhik = 1 },
         },
         EventTable = {
             {s = path .. "wfoly_sm_charlie9_inspect_01.ogg", t = 0.033},
@@ -876,7 +913,7 @@ SWEP.AttachmentElements = {
         },
     },
 	["grip_angled"] = {
-    AttPosMods = { [5] = { Pos = Vector(-2.2, 0, 0), } }	
+    AttPosMods = { [6] = { Pos = Vector(-2.2, 0, 0), } }	
 	}
 }
 
@@ -1037,7 +1074,7 @@ SWEP.GripPoseParam = 5
 SWEP.GripPoseParam2 = 0.5
 SWEP.CodAngledGripPoseParam = 30
 SWEP.CodStubbyGripPoseParam = 20
-SWEP.CodStubbyTallGripPoseParam = 22
+SWEP.CodStubbyTallGripPoseParam = 26
 
 -- Warzone-esque Stats; Add here to change only when using Warzone Stats variable.
 if GetConVar("arc9_mw19_stats_warzone"):GetBool() then
